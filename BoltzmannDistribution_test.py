@@ -119,6 +119,22 @@ def run_tests():
         peak_freq_your_method = bd.peak_frequency(T)
         ratio = peak_freq_your_method / peak_freq_blackbody * 100
         print(f"{T:14d} | {peak_freq_blackbody:.6e} | {peak_freq_your_method:.6e} | {ratio:.16f}")
+    
+    percentages = [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.99]
+
+    print("Energy Ratio Test\n")
+    print("Temperature(K) | Percentage | Energy Ratio (Old) | Energy Ratio (New) | Ratio %")
+    print("-" * 80)
+    for T in temperatures:
+        for P in percentages:
+            # Energy ratio with old method (direct calculation)
+            old_ratio = bd.energy_at_percentage(T, P)
+            # Energy ratio with new method (caching and scaling)
+            new_ratio = bd.get_energy_ratio(P, T)
+            # Calculate ratio of results
+            ratio = (new_ratio / old_ratio) * 100
+            print(f"{T:14d} | {P:.2f}        | {old_ratio:.6e} | {new_ratio:.6e} | {ratio:.6f}")
+        print("-" * 80)  # Separator between temperature sets
 
 if __name__ == "__main__":
     run_tests()
