@@ -77,7 +77,21 @@ class BoltzmannDistribution:
         Returns:
             float: Peak energy
         """
-        return self.point_energy(temperature) / 0.2457097414250071665
+        return self.point_energy(temperature) / 0.245671510374651163
+    
+    def area_under_curve_blackbody_energy(self, T):
+        """
+        Calculate the black body energy at a temperature using standard formula converted to using these same scaling factors.
+        I did it this way to put it in line with the other formulas I am decomposing in this way to scaling factors
+        Same as sigma * T**4
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Radient black body energy
+        """
+        return  T**4 * 10e-8/1.763551974009425578
 
     def area_under_curve(self, temperature: float) -> float:
         """
