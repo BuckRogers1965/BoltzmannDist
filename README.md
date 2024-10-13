@@ -1,5 +1,5 @@
 # BoltzmannDist
-
+This document can be found at https://mystry-geek.blogspot.com/2024/09/single-point-representation-of.html
 
 Scale Invariance and Efficient Computation in Boltzmann Distributions: A Novel Approach
  Author: James M. Rogers, SE Ohio, 30 Sep 2024, 0942
