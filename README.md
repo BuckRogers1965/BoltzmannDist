@@ -1,6 +1,8 @@
 # BoltzmannDist
 More info here: https://mystry-geek.blogspot.com/2024/09/single-point-representation-of.html
 
+Discussion on how I implemented caching:  https://mystry-geek.blogspot.com/2024/10/optimizing-energy-lookup-by-percent-in.html
+
 Scale Invariance and Efficient Computation in Boltzmann Distributions: A Novel Approach
  Author: James M. Rogers, SE Ohio, 30 Sep 2024, 0942
 
