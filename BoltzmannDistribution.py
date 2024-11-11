@@ -140,7 +140,9 @@ class BoltzmannDistribution:
         Returns:
             float: Entropy of the system
         """
-      
+
+        # seems non linear
+
         return self.point_energy(temperature) /temperature
 
     def partition_function(self, temperature: float) -> float:
@@ -190,10 +192,7 @@ class BoltzmannDistribution:
             float: Helmholtz free energy
         """
 
-            #k = constants.Boltzmann
-            #return -k * T * np.log(k * T)
-
-        #return self.average_energy(temperature) * np.log(temperature)
+        # had to revert to traditional method to handle this, non linear
         k = constants.Boltzmann
         return -k * temperature * np.log(k * temperature)
 

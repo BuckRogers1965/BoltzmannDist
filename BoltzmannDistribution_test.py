@@ -212,7 +212,6 @@ def run_tests():
         print(f"{T:14d} | {mpe_traditional:.6e} | {mpe_your_method:.6e} | {ratio:.16f}")
 
     
-'''
     percentages = [0.01, 0.05, 0.1, 0.2, 0.3, 0.333, 0.4, 0.5, 0.53, 0.6, 0.7, 0.8, 0.9, 0.99]
 
     print("\nEnergy Ratio Test\n")
@@ -228,7 +227,6 @@ def run_tests():
             ratio = (new_ratio / old_ratio) * 100
             print(f"{T:14d} | {P:.2f}        | {old_ratio:.6e} | {new_ratio:.6e} | {ratio:.16f}")
         print("-" * 80)  # Separator between temperature sets
-'''
 
 if __name__ == "__main__":
     run_tests()
