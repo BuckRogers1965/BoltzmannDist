@@ -128,7 +128,99 @@ class BoltzmannDistribution:
         Returns:
             float: FWHM value
         """
-        return self.point_energy(temperature) / 0.162935865000977884
+        return self.point_energy(temperature) /0.162935868553486713
+
+    def entropy(self, temperature: float) -> float:
+        """
+        Calculate the entropy of the system at a given temperature.
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Entropy of the system
+        """
+      
+        return self.point_energy(temperature) /temperature
+
+    def partition_function(self, temperature: float) -> float:
+        """
+        Calculate the partition function at a given temperature.
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Partition function value
+        """
+        return self.average_energy(temperature) /1.50
+
+    def average_energy(self, temperature: float) -> float:
+        """
+        Calculate the average energy of the system at a given temperature.
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Average energy
+        """
+        return self.point_energy(temperature) / .462098120373296908   
+
+    def heat_capacity(self, temperature: float) -> float:
+        """
+        Calculate the heat capacity of the system at a given temperature.
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Heat capacity
+        """
+        return self.average_energy(temperature) * temperature /( temperature *10)**2 *100
+
+    def free_energy(self, temperature: float) -> float:
+        """
+        Calculate the Helmholtz free energy of the system at a given temperature.
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Helmholtz free energy
+        """
+
+            #k = constants.Boltzmann
+            #return -k * T * np.log(k * T)
+
+        #return self.average_energy(temperature) * np.log(temperature)
+        k = constants.Boltzmann
+        return -k * temperature * np.log(k * temperature)
+
+    #def energy_distribution(self, temperature: float, energy: float) -> float:
+        #"""
+        #Calculate the probability of a state with a given energy at a specific temperature.
+#
+        #Args:
+            #temperature (float): Temperature in Kelvin
+            #energy (float): Energy of the state
+#
+        #Returns:
+            #float: Probability of the state
+        #"""
+        #return self.average_energy(temperature) 
+
+    def most_probable_energy(self, temperature: float) -> float:
+        """
+        Calculate the most probable energy at a given temperature.
+
+        Args:
+            temperature (float): Temperature in Kelvin
+
+        Returns:
+            float: Most probable energy
+        """
+        return self.point_energy(temperature) / 1.386294361119890937
 
     @staticmethod
     def wavelength_from_frequency(frequency: float) -> float:
@@ -187,9 +279,11 @@ class BoltzmannDistribution:
             float: Energy ratio
         """
         if percentage in self.cache:
+            print (" ", end='')
             reference_ratio = self.cache[percentage]
             self.cache.move_to_end(percentage)
         else:
+            print ("*", end='')
             reference_ratio = self.energy_at_percentage(
                 self.reference_temperature, percentage)
             self.cache[percentage] = reference_ratio
